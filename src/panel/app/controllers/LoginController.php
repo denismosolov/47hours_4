@@ -6,10 +6,30 @@
  * Time: 3:47 PM
  */
 
-class LoginController extends Phalcon\Mvc\Controller
+class LoginController extends \Phalcon\Mvc\Controller
 {
     public function indexAction()
     {
-        echo 'Login Controller';
+        $loginForm = new \LoginForm();
+        $loginForm->setAction('/login');
+        if($this->request->isPost())
+        {
+            $userEmail = $this->request->get("email", "email");
+            $userPassword = $this->request->get("password", "string");
+
+            if($loginForm->isValid($_POST)){
+                
+            }
+            exit;
+            /*if(!$userEmail || !$userPassword){
+                $this->view->setVar('error', 'Ошибка заполнения формы!');
+                return;
+            }*/
+
+            // Send email with confirmation code to user email
+        }else{
+            // Something wrong
+        }
+        $this->view->setVar('form', $loginForm);
     }
 }

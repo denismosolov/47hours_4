@@ -1,0 +1,6 @@
+<<<<<<< Updated upstream
+<?php "<h1>Старт Falcon Start!</h1>";?>
+=======
+<?php echo $this->flash; ?>
+<?php echo "<h1>Старт Falcon Start!</h1>";?>
+>>>>>>> Stashed changes
