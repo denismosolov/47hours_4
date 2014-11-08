@@ -34,7 +34,7 @@ try {
 
         return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
             'host' => 'localhost',
-            'dbanme' => $db_name,
+            'dbanme' => $db_names,
             'username' => 'root',
             'password' => $password
         ));
