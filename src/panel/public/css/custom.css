@@ -17,3 +17,8 @@ html, body {
 .panel {
     background: linear-gradient(#FFF, #E0E0E0);
 }
+
+.panel-heading {
+   margin-left: -15px;
+   margin-right: -15px;
+}
