@@ -13,23 +13,23 @@ header('Content-type: text/html; charset=utf-8');
     <body>
         <table style="height: 100%; width: 100%;">
             <tr><td>
-                <form id="formLogin">
+                <form id="formLogin" action="<?= $form->getAction(); ?>" method="POST">
                     <div class="panel panel-default col-md-4 col-md-offset-4">
                         <div class="panel-body">
                             <div class="form-group">
                                 <p>
                                     <label for="txtEmail">E-mail:</label>
-                                    <input id="txtEmail" type="text" class="form-control" />
+                                    <?= $form->render('email',array('class'=>'form-control')); ?>
                                 </p>
                             </div>
                             <div class="form-group">
                                 <p>
                                     <label for="txtPassword">Пароль:</label>
-                                    <input id="txtEmail" type="password" class="form-control" />
+                                    <?= $form->render('password',array('class'=>'form-control')); ?>
                                 </p>
                             </div>
                             <div class="form-buttons-group">
-                                <input type="submit" class="btn btn-primary col-md-3" value="Вход" />
+                                <?= $form->render('submit',array('class'=>'btn btn-primary col-md-3')); ?>
                                 <input type="button" class="btn btn-default col-md-3" value="Регистрация" />
                             </div>
                         </div>
