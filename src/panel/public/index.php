@@ -63,6 +63,7 @@ try {
     //Handle the request
     $application = new \Phalcon\Mvc\Application($di);
 
+    header('Content-Type: text/html; charset=utf-8');
     echo $application->handle()->getContent();
 
 } catch(\Phalcon\Exception $e) {
