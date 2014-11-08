@@ -1,5 +1,5 @@
 .idea/
 *.log
-app/configs/db.php
+src/panel/app/configs/db.php
 /src/panel/nbproject/private/
 nbproject/
