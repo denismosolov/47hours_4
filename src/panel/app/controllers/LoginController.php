@@ -21,10 +21,6 @@ class LoginController extends \Phalcon\Mvc\Controller
                 
             }
             exit;
-            /*if(!$userEmail || !$userPassword){
-                $this->view->setVar('error', 'Ошибка заполнения формы!');
-                return;
-            }*/
 
             // Send email with confirmation code to user email
         }else{

@@ -6,7 +6,7 @@
  * Time: 19:43
  */
 
-class SurveyResult extends \Phalcon\Mvc\Model{
+class UserSurvies extends \Phalcon\Mvc\Model{
     protected $user_id;
     protected $survey_id;
     protected $started_date;
@@ -23,7 +23,7 @@ class SurveyResult extends \Phalcon\Mvc\Model{
     }
 
     public static function addNewResult($uid,$sid,$sdate,$cdate,$ispassed){
-        $surveyResult = new SurveyResult();
+        $surveyResult = new UserSurvies();
         $surveyResult->create(array(
             'user_id' =>$uid,
             'survey_id' =>$sid,
