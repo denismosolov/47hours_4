@@ -1,0 +1,34 @@
+<?php
+header('Content-type: text/html; charset=utf-8'); 
+?>
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Панель - регистрация</title>
+        <link href="../public/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+        <link href="../public/css/bootstrap/bootstrap-theme.min.css" rel="stylesheet">
+        <link href="../public/css/custom.css" rel="stylesheet">
+    </head>
+    <body>
+        <table style="height: 100%; width: 100%;">
+            <tr><td>
+                <form id="formLogin" action="<?= $form->getAction(); ?>" method="POST">
+                    <div class="panel panel-default col-md-4 col-md-offset-4">
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <p>
+                                    <label for="txtEmail">E-mail:</label>
+                                    <?= $form->render('email',array('class'=>'form-control')); ?>
+                                </p>
+                            </div>
+                            <div class="form-buttons-group">
+                                <?= $form->render('submit',array('class'=>'btn btn-primary col-md-3')); ?>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </td></tr>
+        </table>
+    </body>
+</html>
