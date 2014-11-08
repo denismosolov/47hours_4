@@ -18,7 +18,7 @@ try {
     $di->set('db', function(){
         return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
             'host' => DB_HOST,
-            'dbanme' => DB_NAME,
+            'dbname' => DB_NAME,
             'username' => DB_USERNAME,
             'password' => DB_PASSWORD
         ));
