@@ -3,13 +3,13 @@
  * Created by PhpStorm.
  * User: bert
  * Date: 11/8/14
- * Time: 3:09 PM
+ * Time: 3:47 PM
  */
 
-class IndexController extends \Phalcon\Mvc\Controller
+class LoginController extends Phalcon\Mvc\Controller
 {
     public function indexAction()
     {
-
+        echo 'Login Controller';
     }
 }
