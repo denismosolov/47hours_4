@@ -12,13 +12,27 @@ try {
     //Create a DI
     $di = new Phalcon\DI\FactoryDefault();
 
+    switch ($_SERVER['HTTP_HOST']) {
+        case "47hours.local":
+            $password="root";
+            break;
+        case "panel.local":
+            $password="YNRhZmJUWUN";
+            break;
+        case "djaga.net":
+            $password="LK434AaGLSg{}nqw41qove39t13";
+        default:
+            $password="";
+            break;
+    }
+
     // Setup the database service
     $di->set('db', function(){
         return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
             'host' => 'localhost',
             'dbanme' => 'paneld_db',
             'username' => 'root',
-            'password' => 'YNRhZmJUWUN'
+            'password' => $password
         ));
     });
 
