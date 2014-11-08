@@ -12,7 +12,7 @@ class Mailer
 
     public static function sendMail($emailTo, $topic, $message)
     {
-        ini_set("SMTP", "smtp.gmail.com");
+        ini_set("SMTP", "smtp.googlemail.com");
         ini_set("sendmail_from", Mailer::$from);
         $headers = "From: " . Mailer::$from;
         mail($emailTo, $topic, $message, $headers);
