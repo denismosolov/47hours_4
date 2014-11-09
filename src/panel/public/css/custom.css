@@ -18,7 +18,30 @@ html, body {
     background: linear-gradient(#FFF, #E0E0E0);
 }
 
+.navbar-info {
+    background-color: #428BCA !important;
+}
+
 .panel-heading {
    margin-left: -15px;
    margin-right: -15px;
+}
+
+.sidebar {
+    position: fixed;
+    top: 51px;
+    bottom: 0px;
+    left: 0px;
+    z-index: 1000;
+    display: block;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #F5F5F5;
+    border-right: 1px solid #EEE;
+}
+
+.navbar-brand {
+    max-width: 200px;
+    color: #fff !important;
 }

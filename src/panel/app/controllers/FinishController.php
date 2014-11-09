@@ -10,9 +10,15 @@ class FinishController extends \Phalcon\Mvc\Controller
 {
     public function IndexAction() {
         
-        if(! $this->session->has('user_id')) {
-            // user have to be authorized
-            throw new Exception('An error has occured #1');
+//        if(! $this->session->has('user_id')) {
+//            // user have to be authorized
+//            throw new Exception('An error has occured #1');
+//        }
+        if ($this->session->has("curr_user")) {
+            //Retrieve user
+            $user = $this->session->get("curr_user");
+        } else {
+            throw new Exception('Unauthorized');
         }
         if (! $this->session->has('active_users_surveys_id')) {
             // see start controller
@@ -23,20 +29,13 @@ class FinishController extends \Phalcon\Mvc\Controller
         
         $request = $this->request->get();
         
-        if (! isset($request['user_id']) || ! isset($request['survey_id'])) {
+        if (! isset($request['survey_id'])) {
             throw new Exception('An error has occured #3');
         }
         
-        if ($request['user_id'] != $this->session->get('user_id')) {
-            // probably someone cheating
-            // @todo: we have to log this situation
-            // it might help in resolving cheater in the future
-            throw new Exception('An error has occured #4');
-        }
+        $UsersSurveys = UsersSurveys::findFirst(array('user_id' => $user->getId(), 'survey_id' => $request['survey_id'], 'completed_date is null'));
         
-        $UsersSurveys = UsersSurveys::findFirst(array('user_id' => $request['user_id'], 'survey_id' => $request['survey_id']));
-        
-        if (! $UsersSurveys || $UsersSurveys->getUserId() != $request['user_id'] || $UsersSurveys->getSurveyId() != $request['survey_id']) {
+        if (! $UsersSurveys) {
             // @todo: probably cheater deteced, should log
             // it might help in resolving cheater in the future
             throw new Exception('An error has occured #5');
