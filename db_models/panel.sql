@@ -91,10 +91,10 @@ ENGINE = InnoDB
 COMMENT = 'Match surveys with invited users';
 
 
-INSERT INTO `panel`.`surveys` VALUES(1, 'Довольны ли вы услугами ЖКХ ?', '2014-11-09', NULL, 1, ' http://www.surveygizmo.com/s3/1884090/screening');
-INSERT INTO `panel`.`surveys` VALUES(2, 'Какой город самый безопасный для Вас ?', '2014-11-09', NULL, 1, 'http://tonkosti.ru/%D0%9F%D1%80%D0%B0%D0%B3%D0%B0');
-INSERT INTO `panel`.`surveys` VALUES(3, 'Ваш любимый президент ?', '2014-11-07', NULL, 1, 'http://www.pravmir.ru/aleksandr-nevskij-myslitel-filosof-strateg-svyatoj/');
-INSERT INTO `panel`.`surveys` VALUES(4, 'Чем ворон похож на письменный стол', '2014-11-09', NULL, 1, 'http://otvet.mail.ru/question/35731609');
+INSERT INTO `panel`.`surveys` VALUES(1, 'Довольны ли вы услугами ЖКХ ?', '2014-11-09', NULL, 10, 'http://www.surveygizmo.com/s3/1884487/47hours-demo');
+-- INSERT INTO `panel`.`surveys` VALUES(2, 'Какой город самый безопасный для Вас ?', '2014-11-09', NULL, 1, 'http://tonkosti.ru/%D0%9F%D1%80%D0%B0%D0%B3%D0%B0');
+-- INSERT INTO `panel`.`surveys` VALUES(3, 'Ваш любимый президент ?', '2014-11-07', NULL, 1, 'http://www.pravmir.ru/aleksandr-nevskij-myslitel-filosof-strateg-svyatoj/');
+-- INSERT INTO `panel`.`surveys` VALUES(4, 'Чем ворон похож на письменный стол', '2014-11-09', NULL, 1, 'http://otvet.mail.ru/question/35731609');
 
 INSERT INTO `panel`.`users` VALUES(1, '2014-11-09', 0, 0, NULL, NULL, NULL, 'queentin@hackaton.tut', NULL, '385165322b273704f9d078928b79e4d1');
 
