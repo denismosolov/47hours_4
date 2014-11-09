@@ -97,10 +97,12 @@ INSERT INTO `panel`.`surveys` VALUES(1, 'Довольны ли вы услуга
 -- INSERT INTO `panel`.`surveys` VALUES(4, 'Чем ворон похож на письменный стол', '2014-11-09', NULL, 1, 'http://otvet.mail.ru/question/35731609');
 
 INSERT INTO `panel`.`users` VALUES(1, '2014-11-09', 0, 0, NULL, NULL, NULL, 'queentin@hackaton.tut', NULL, '385165322b273704f9d078928b79e4d1');
+/*
 INSERT INTO `panel`.`users` VALUES(2, '2014-11-09', 0, 0, NULL, NULL, NULL, 'a@example.com', NULL, '385165322b273704f9d078928b79e4d1');
 INSERT INTO `panel`.`users` VALUES(3, '2014-11-09', 0, 0, NULL, NULL, NULL, 'b@example.com', NULL, '385165322b273704f9d078928b79e4d1');
 INSERT INTO `panel`.`users` VALUES(4, '2014-11-09', 0, 0, NULL, NULL, NULL, 'c@example.com', NULL, '385165322b273704f9d078928b79e4d1');
 INSERT INTO `panel`.`users` VALUES(5, '2014-11-09', 0, 0, NULL, NULL, NULL, 'test@example.com', NULL, '385165322b273704f9d078928b79e4d1');
+*/
 
 INSERT INTO `panel`.`invited_users` VALUES(1, 1);
 -- INSERT INTO `panel`.`invited_users` VALUES(2, 1);
