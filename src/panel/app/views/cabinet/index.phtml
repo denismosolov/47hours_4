@@ -15,12 +15,29 @@ and open the template in the editor.
             <header>Ваш кабинет</header>
         </section>
         <section>
-            <p>Чтобы мы могли присылать подходящие вам опросы, пожалуйста, <a href="http://www.surveygizmo.com/s3/1884090/screening?user_id=1&survey_id=1">ответьте на несколько вопросов.</a></p>
+            <p>Чтобы мы могли присылать подходящие вам опросы, пожалуйста, <a href="http://www.surveygizmo.com/s3/1884090/screening?survey_id=1">ответьте на несколько вопросов.</a></p>
         </section>
         <section>
             <header>Доступные опросы:</header>
             <article>
-                <div>К сожалению, сейчас нет опросов для вас. Заходите позже.</div>
+                <?php if (empty($open_surveys)) { ?>
+                <div>К сожалению, сейчас нет опросов для вас. Зайдите позже.</div>
+                <?php } else { ?>
+                    <?php foreach ($open_surveys as $open_survey) { ?>
+                    <div><a href="/start?survey_id=<?php echo $open_survey->getId() ?>">Опрос #<?php echo $open_survey->getId(); ?></a></div>
+                    <?php } ?>
+                <?php } ?>
+            </article>
+        </section>
+        <section>
+            <header>Пройденные опросы:</header>
+                <?php if (empty($my_surveys)) { ?>
+                <div>К сожалению, сейчас нет опросов для вас. Зайдите позже.</div>
+                <?php } else { ?>
+                    <?php foreach ($my_surveys as $my_survey) { ?>
+                    <div>Опрос #<?php echo $my_survey->getId() ?> </div>
+                    <?php } ?>
+                <?php } ?>
             </article>
         </section>
     </body>
