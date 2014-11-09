@@ -103,10 +103,10 @@ INSERT INTO `panel`.`users` VALUES(4, '2014-11-09', 0, 0, NULL, NULL, NULL, 'c@e
 INSERT INTO `panel`.`users` VALUES(5, '2014-11-09', 0, 0, NULL, NULL, NULL, 'test@example.com', NULL, '385165322b273704f9d078928b79e4d1');
 
 INSERT INTO `panel`.`invited_users` VALUES(1, 1);
-INSERT INTO `panel`.`invited_users` VALUES(1, 2);
-INSERT INTO `panel`.`invited_users` VALUES(1, 3);
-INSERT INTO `panel`.`invited_users` VALUES(1, 4);
-INSERT INTO `panel`.`invited_users` VALUES(1, 5);
+INSERT INTO `panel`.`invited_users` VALUES(2, 1);
+INSERT INTO `panel`.`invited_users` VALUES(3, 1);
+INSERT INTO `panel`.`invited_users` VALUES(4, 1);
+INSERT INTO `panel`.`invited_users` VALUES(5, 1);
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
