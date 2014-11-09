@@ -91,6 +91,15 @@ ENGINE = InnoDB
 COMMENT = 'Match surveys with invited users';
 
 
+INSERT INTO surveys VALUES(1, 'Довольны ли вы услугами ЖКХ ?', '2014-11-09', NULL, 1, ' http://www.surveygizmo.com/s3/1884090/screening');
+INSERT INTO surveys VALUES(2, 'Какой город самый безопасный для Вас ?', '2014-11-09', NULL, 1, 'http://tonkosti.ru/%D0%9F%D1%80%D0%B0%D0%B3%D0%B0');
+INSERT INTO surveys VALUES(3, 'Ваш любимый президент ?', '2014-11-07', NULL, 1, 'http://www.pravmir.ru/aleksandr-nevskij-myslitel-filosof-strateg-svyatoj/');
+INSERT INTO surveys VALUES(4, 'Чем ворон похож на письменный стол', '2014-11-09', NULL, 1, 'http://otvet.mail.ru/question/35731609');
+
+INSERT INTO users VALUES(1, '2014-11-09', 0, 0, '0000-00-00', NULL, NULL, 'queentin@hackaton.tut', NULL, '385165322b273704f9d078928b79e4d1');
+
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
