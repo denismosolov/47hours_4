@@ -6,31 +6,49 @@
  * Time: 19:43
  */
 
-class UserSurvies extends \Phalcon\Mvc\Model{
-    protected $user_id;
-    protected $survey_id;
-    protected $started_date;
-    protected $completed_date;
-    protected $is_passed;
-
+class UserSurvies extends \Phalcon\Mvc\Model
+{
+    
+    private $user_id;
+    private $survey_id;
+    private $started_date;
+    private $completed_date;
+    private $is_passed;
+    
     public function initialize(){
         $this->setSource("users_surveys");
     }
-
+    
     public function isValid(){
         //TODO
         return true;
     }
 
-    public static function addNewResult($uid,$sid,$sdate,$cdate,$ispassed){
-        $surveyResult = new UserSurvies();
-        $surveyResult->create(array(
-            'user_id' =>$uid,
-            'survey_id' =>$sid,
-            'started_date' =>$sdate,
-            'completed_date' =>$cdate,
-            'is_passed' => $ispassed,
-        ));
+    public function getUserId() {
+        return $this->user_id;
+    }
+    
+    public function getSurveyId() {
+        return $this->survey_id;
     }
 
+    public function setUserId($uid) {
+        $this->user_id = strval($uid);
+    }
+    
+    public function setSurveyId($sid) {
+        $this->survey_id = strval($sid);
+    }
+    
+    public function setStartDate($sdate) {
+        $this->started_date = strval($sdate);
+    }
+    
+    public function setCompletedDate($cdate) {
+        $this->completed_date = strval($cdate);
+    }
+
+    public function setPassed($passed) {
+        $this->is_passed = strval($passed);
+    }
 }

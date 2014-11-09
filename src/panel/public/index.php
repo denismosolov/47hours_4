@@ -48,6 +48,13 @@ try {
         return $flash;
     });
 
+    //Start the session the first time when some component request the session service
+    $di->setShared('session', function() {
+        $session = new Phalcon\Session\Adapter\Files();
+        $session->start();
+        return $session;
+    });
+    
     //Handle the request
     $application = new \Phalcon\Mvc\Application($di);
 
@@ -57,3 +64,4 @@ try {
 } catch(\Phalcon\Exception $e) {
     echo "PhalconException: ", $e->getMessage();
 }
+    

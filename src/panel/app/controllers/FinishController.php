@@ -8,15 +8,50 @@
 
 class FinishController extends \Phalcon\Mvc\Controller
 {
-    public function IndexAction(){
+    public function IndexAction() {
+        
+        if(! $this->session->has('user_id')) {
+            // user have to be authorized
+            throw new Exception('An error has occured #1');
+        }
+        if (! $this->session->has('active_users_surveys_id')) {
+            // see start controller
+            // @todo: it might be checter, we should add info to cheaters log
+            // it means the user have started this survey
+            throw new Exception('An error has occured #2');
+        }
+        
         $request = $this->request->get();
-
-        UserSurvies::addNewResult(
-            $request['user_id'],
-            $request['survey_id'],
-            date("Y-m-d H:i:s"),
-            date("Y-m-d H:i:s"),
-            $request['is_passed']
-        );
+        
+        if (! isset($request['user_id']) || ! isset($request['survey_id'])) {
+            throw new Exception('An error has occured #3');
+        }
+        
+        if ($request['user_id'] != $this->session->get('user_id')) {
+            // probably someone cheating
+            // @todo: we have to log this situation
+            // it might help in resolving cheater in the future
+            throw new Exception('An error has occured #4');
+        }
+        
+        $UserSurveys = UserSurvies::findFirst(array('user_id' => $request['user_id'], 'survey_id' => $request['survey_id']));
+        
+        if (! $UserSurveys || $UserSurveys->getUserId() != $request['user_id'] || $UserSurveys->getSurveyId() != $request['survey_id']) {
+            // @todo: probably cheater deteced, should log
+            // it might help in resolving cheater in the future
+            throw new Exception('An error has occured #5');
+        }
+        
+        $UserSurveys->setPassed(isset($request['is_passed']) ? '1' : '0');
+        $UserSurveys->setCompletedDate(date("Y-m-d H:i:s"));
+        $this->session->remove('active_users_surveys_id');
+        if($UserSurveys->save()) {
+            // @todo: implement another type of redirect
+            // this one is awful
+            $this->response->redirect('/cabinet/index', true);
+            $this->view->disable();
+        } else {
+            throw new Exception('An error has occured #6');
+        }
     }
 }
