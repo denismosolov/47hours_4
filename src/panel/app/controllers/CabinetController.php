@@ -18,7 +18,7 @@ class CabinetController extends \Phalcon\Mvc\Controller
         // @todo: remove
 //        $this->session->set('user_id', '1');
         // end debug
-        
+
         if ($this->session->has("curr_user")) {
             //Retrieve user
             $user = $this->session->get("curr_user");

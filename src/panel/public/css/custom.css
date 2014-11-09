@@ -45,3 +45,7 @@ html, body {
     max-width: 200px;
     color: #fff !important;
 }
+
+h1.slogan {
+    color: #999;
+}

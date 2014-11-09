@@ -10,6 +10,11 @@ class LoginController extends \Phalcon\Mvc\Controller
 {
     public function indexAction()
     {
+        if ($this->session->has("curr_user")) {
+            header("Location: /cabinet");
+            return;
+        }
+
         $loginForm = new \LoginForm();
         $loginForm->setAction('/login');
         if($this->request->isPost())
