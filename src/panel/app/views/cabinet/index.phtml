@@ -9,36 +9,76 @@ and open the template in the editor.
         <title>Ваш личный кабинет</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+        <link href="/css/bootstrap/bootstrap-theme.min.css" rel="stylesheet">
+        <link href="/css/bootstrap/dashboard.css" rel="stylesheet">
+        <link href="/css/custom.css" rel="stylesheet">
+        <script src="/js/jquery/jquery-1.11.0.min.js"></script>
     </head>
     <body>
-        <section>
-            <header>Ваш кабинет</header>
-        </section>
-        <section>
-            <p>Чтобы мы могли присылать подходящие вам опросы, пожалуйста, <a href="http://www.surveygizmo.com/s3/1884090/screening?survey_id=1">ответьте на несколько вопросов.</a></p>
-        </section>
-        <section>
-            <header>Доступные опросы:</header>
-            <article>
-                <?php if (empty($open_surveys)) { ?>
-                <div>К сожалению, сейчас нет опросов для вас. Зайдите позже.</div>
-                <?php } else { ?>
-                    <?php foreach ($open_surveys as $open_survey) { ?>
-                    <div><a href="/start?survey_id=<?php echo $open_survey->getId() ?>">Опрос #<?php echo $open_survey->getId(); ?></a></div>
-                    <?php } ?>
-                <?php } ?>
-            </article>
-        </section>
-        <section>
-            <header>Пройденные опросы:</header>
-                <?php if (empty($my_surveys)) { ?>
-                <div>К сожалению, сейчас нет опросов для вас. Зайдите позже.</div>
-                <?php } else { ?>
-                    <?php foreach ($my_surveys as $my_survey) { ?>
-                    <div>Опрос #<?php echo $my_survey->getId() ?> </div>
-                    <?php } ?>
-                <?php } ?>
-            </article>
-        </section>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#section_completed').hide();
+                
+                $('#a_available_surveys').click(function() {
+                    $('#li_available_surveys').attr('class','active');
+                    $('#li_completed_surveys').removeAttr('class');
+                    $('#section_completed').hide();
+                    $('#section_available').show();
+                    return false;
+                });
+                
+                $('#a_completed_surveys').click(function() {
+                    $('#li_completed_surveys').attr('class','active');
+                    $('#li_available_surveys').removeAttr('class');
+                    $('#section_available').hide();
+                    $('#section_completed').show();
+                    return false;
+                });
+            });
+        </script>
+        <nav class="navbar navbar-info navbar-fixed-top" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header navbar-brand">Ваш кабинет</div>
+            </div>
+        </nav>
+        <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2 sidebar">
+                <ul class="nav nav-sidebar">
+                    <li id="li_available_surveys" class="active"><a id="a_available_surveys" href="#">Доступные опросы</a></li>
+                    <li id="li_completed_surveys"><a  id="a_completed_surveys" href="#">Пройденные опросы</a></li>
+                </ul>
+            </div>
+            <div class="col-md-10 col-md-offset-2 main">
+                <section class="alert alert-info">
+                <p>Чтобы мы могли присылать подходящие вам опросы, пожалуйста, <a href="/start?survey_id=1">ответьте на несколько вопросов</a>.</p>
+                </section>
+                <section id="section_available">
+                    <header>Доступные опросы:</header>
+                    <article>
+                        <?php if (empty($open_surveys)) { ?>
+                       <div>К сожалению, сейчас нет опросов для вас. Зайдите позже.</div>
+                        <?php } else { ?>
+                            <?php foreach ($open_surveys as $open_survey) { ?>
+                            <div><a href="/start?survey_id=<?php echo $open_survey->getId() ?>">Опрос #<?php echo $open_survey->getId(); ?></a></div>
+                            <?php } ?>
+                        <?php } ?>
+                    </article>
+                </section>
+                <section id="section_completed">
+                    <header>Пройденные опросы:</header>
+                        <?php if (empty($my_surveys)) { ?>
+                        <div>К сожалению, сейчас нет опросов для вас. Зайдите позже.</div>
+                        <?php } else { ?>
+                            <?php foreach ($my_surveys as $my_survey) { ?>
+                            <div>Опрос #<?php echo $my_survey->getId() ?> </div>
+                            <?php } ?>
+                        <?php } ?>
+                    </article>
+                </section>
+            </div> 
+        </div>
+        </div>
     </body>
 </html>
