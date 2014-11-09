@@ -9,8 +9,8 @@
 use Phalcon\Forms\Form,
     Phalcon\Forms\Element\Email as EmailElement,
     Phalcon\Forms\Element\Submit,
-    Phalcon\Mvc\Model\Validator\Email,
-    Phalcon\Mvc\Model\Validator\PresenceOf;
+    Phalcon\Validation\Validator\Email,
+    Phalcon\Validation\Validator\PresenceOf;
 
 class RegistrationForm extends Form
 {
@@ -19,6 +19,9 @@ class RegistrationForm extends Form
         $email = new EmailElement("email");
         $email->addValidator(new PresenceOf(array(
             'message' => 'Это обязательное поле'
+        )));
+        $email->addValidator(new Email(array(
+            'message' => 'Некорректный e-mail формат'
         )));
 
         $submit = new Submit('submit', array('value' => 'Регистрация'));

@@ -16,7 +16,7 @@ header('Content-type: text/html; charset=utf-8');
                     <?php if($success){ ?>
                         <div class="panel-body">
                             <p class="text-center">
-                                <?php $this->flash->success("На ваш email отправлено сообщение с подтверждением"); ?>
+                                <?php $this->flash->success("Вы успешно зарегистрировались. Ваш пароль - <strong>{$success}</strong>"); ?>
                             </p>
                         </div>
                     <?php }else{ ?>
@@ -29,7 +29,7 @@ header('Content-type: text/html; charset=utf-8');
                             <div class="form-group">
                                 <p>
                                     <label for="txtEmail">E-mail:</label>
-                                    <?= $form->render('email',array('class'=>'form-control')); ?>
+                                    <?= $form->render('email',array('class'=>'form-control', 'required' => true)); ?>
                                 </p>
                             </div>
                             <div class="form-buttons-group">
