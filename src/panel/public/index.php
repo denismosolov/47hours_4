@@ -55,6 +55,13 @@ try {
         return $session;
     });
 
+    $di->set('router', function () {
+        $router = new Phalcon\Mvc\Router\Annotations(false);
+        $router->setDefaultController('login');
+        $router->setDefaultAction('index');
+        return $router;
+    });
+
     //Handle the request
     $application = new \Phalcon\Mvc\Application($di);
 
