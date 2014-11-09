@@ -32,7 +32,7 @@ class CabinetController extends \Phalcon\Mvc\Controller
             'user_id' => $user->getId()
         ));
         $open_surveys = array();
-        $my_surveys = array();
+
         if (count($InvitedUsers)) {
             foreach ($InvitedUsers as $row) {
                 $sid = $row->getSurveyId();
@@ -40,15 +40,26 @@ class CabinetController extends \Phalcon\Mvc\Controller
                     'user_id' => $user->getId(),
                     'survey_id' => $sid
                 ));
-                if ($US) {
-                    $my_surveys[] = Surveys::findFirst($sid);
-                } else {
+                if (! $US) {
                     $open_surveys[] = Surveys::findFirst($sid);
                 }
             }
         } else {
-            $this->view->open_survey_ids = array();
+            $this->view->open_surveys = array();
         }
+        
+        $my_surveys = array();        
+        $USS = UsersSurveys::find(array(
+            'user_id' => $user->getId()
+        ));
+        if ($USS) {
+            foreach ($USS as $row) {
+                $my_surveys[] = Surveys::findFirst($row->getSurveyId());
+            }
+        } else {
+            $my_surveys = array();
+        }
+        
         $this->view->setVar('open_surveys', $open_surveys);
         $this->view->setVar('my_surveys', $my_surveys);
     }
