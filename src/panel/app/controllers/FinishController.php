@@ -33,7 +33,7 @@ class FinishController extends \Phalcon\Mvc\Controller
             throw new Exception('An error has occured #3');
         }
         
-        $UsersSurveys = UsersSurveys::findFirst(array('user_id' => $user->getId(), 'survey_id' => $request['survey_id'], 'completed_date is null'));
+        $UsersSurveys = UsersSurveys::findFirst(array('user_id' => $user->getId(), 'survey_id' => $request['survey_id']));
         
         if (! $UsersSurveys) {
             // @todo: probably cheater deteced, should log

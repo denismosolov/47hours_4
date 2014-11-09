@@ -1,0 +1,16 @@
+<?php
+header('Content-type: text/html; charset=utf-8'); 
+?>
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Панель - регистрация</title>
+        <link href="/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+        <link href="/css/bootstrap/bootstrap-theme.min.css" rel="stylesheet">
+        <link href="/css/custom.css" rel="stylesheet">
+    </head>
+    <body>
+        <div><?php $this->flash->notice("Вы уже проходили этот опрос ранее."); ?></div>
+    </body>
+</html>

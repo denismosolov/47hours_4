@@ -24,6 +24,7 @@ class CabinetController extends \Phalcon\Mvc\Controller
             $user = $this->session->get("curr_user");
         } else {
             $this->response->redirect('login');
+            return;
         }
         
         // @todo: check how many respondents asked, is_opened
@@ -56,6 +57,9 @@ class CabinetController extends \Phalcon\Mvc\Controller
             foreach ($USS as $row) {
                 $my_surveys[] = Surveys::findFirst($row->getSurveyId());
             }
+            
+             //dirty fix for presentation
+            array_shift($my_surveys);
         } else {
             $my_surveys = array();
         }
@@ -65,7 +69,8 @@ class CabinetController extends \Phalcon\Mvc\Controller
     }
 
     public function logoutAction(){
-        $this->session->remove('curr_user');
+        //$this->session->remove('curr_user');
+        $this->session->destroy();
         $this->response->redirect('login');
     }
 }

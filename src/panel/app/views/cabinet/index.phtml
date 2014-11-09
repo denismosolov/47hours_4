@@ -69,7 +69,7 @@ and open the template in the editor.
                             <?php foreach ($open_surveys as $open_survey) { ?>
                                 <tr>
                                     <td><a href="/start?survey_id=<?php echo $open_survey->getId() ?>">Опрос #<?php echo $open_survey->getId(); ?></a></td>
-                                    <td>5 руб.</td>
+                                    <td>100 руб.</td>
                                 </tr>
                             <?php } ?>
                             </table>
@@ -78,7 +78,7 @@ and open the template in the editor.
                 </section>
                 <section id="section_completed">
                         <?php if (empty($my_surveys)) { ?>
-                        <div>К сожалению, сейчас нет опросов для вас. Зайдите позже.</div>
+                        <div>Вы ещё не заполняли наши опросы. Посмотрите вкладку Доступные Опросы.</div>
                         <?php } else { ?>
                             <div class="table-responsive">
                             <table class="table table-striped">
@@ -91,10 +91,11 @@ and open the template in the editor.
                             <?php foreach ($my_surveys as $my_survey) { ?>
                                 <tr>
                                     <td>Опрос #<?php echo $my_survey->getId() ?></td>
-                                    <td>10 руб.</td>
+                                    <td>100 руб.</td>
                                 </tr>
                             <?php } ?>
                             </table>
+                            <div>Доступный баланс: 100 руб.</div><button class="btn btn-primary">Вывести</button>
                             </div>
                         <?php } ?>
                 </section>

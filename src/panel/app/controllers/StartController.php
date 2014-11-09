@@ -48,6 +48,15 @@ class StartController extends \Phalcon\Mvc\Controller
         // befo it redirect to survey,
         // it tracks survey_id, user_id and start_date 
         // is_passed, completed_date will be added later
+        $surveys = UsersSurveys::find(array(
+            'survey_id' => $request['survey_id'],
+            'user_id' => $user->getId()
+        ));
+        if (count($surveys)) {
+            $this->response->redirect('start/prohibited');
+            return;
+        }
+        
         $UsersSurveys = new UsersSurveys();
         $UsersSurveys->setUserId($user->getId());
         $UsersSurveys->setSurveyId($request['survey_id']);
@@ -63,5 +72,9 @@ class StartController extends \Phalcon\Mvc\Controller
         } else {
             throw new Exception('An error has occured #1');
         }
+    }
+    
+    public function ProhibitedAction() {
+        
     }
 }
