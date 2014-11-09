@@ -34,7 +34,7 @@ try {
     //Setup a base URI so that all generated URIs include the "tutorial" folder
     $di->set('url', function(){
         $url = new \Phalcon\Mvc\Url();
-        $url->setBaseUri('/panel/');
+        $url->setBaseUri('/');
         return $url;
     });
 
@@ -54,7 +54,7 @@ try {
         $session->start();
         return $session;
     });
-    
+
     //Handle the request
     $application = new \Phalcon\Mvc\Application($di);
 

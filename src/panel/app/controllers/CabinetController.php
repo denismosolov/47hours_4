@@ -52,4 +52,9 @@ class CabinetController extends \Phalcon\Mvc\Controller
         $this->view->setVar('open_surveys', $open_surveys);
         $this->view->setVar('my_surveys', $my_surveys);
     }
+
+    public function logoutAction(){
+        $this->session->remove('curr_user');
+        $this->response->redirect('/login');
+    }
 }

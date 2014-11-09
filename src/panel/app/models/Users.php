@@ -64,5 +64,18 @@ class Users extends \Phalcon\Mvc\Model
         return $this->password;
     }
 
+    public static function ifUserExist($email, $password){
+        if(!$email || !$password){
+            return false;
+        }
+        return self::query()
+            ->where("email = :email:")
+            ->andWhere("password = :password:")
+            ->bind(array("email" => $email, 'password' => md5($password)))
+            ->execute();
+
+
+    }
+
 
 }
