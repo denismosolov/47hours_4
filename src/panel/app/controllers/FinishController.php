@@ -34,7 +34,7 @@ class FinishController extends \Phalcon\Mvc\Controller
             throw new Exception('An error has occured #4');
         }
         
-        $UserSurveys = UserSurvies::findFirst(array('user_id' => $request['user_id'], 'survey_id' => $request['survey_id']));
+        $UserSurveys = UserSurveys::findFirst(array('user_id' => $request['user_id'], 'survey_id' => $request['survey_id']));
         
         if (! $UserSurveys || $UserSurveys->getUserId() != $request['user_id'] || $UserSurveys->getSurveyId() != $request['survey_id']) {
             // @todo: probably cheater deteced, should log
