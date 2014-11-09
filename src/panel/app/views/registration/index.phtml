@@ -13,6 +13,13 @@ header('Content-type: text/html; charset=utf-8');
     <body>
         <table style="height: 100%; width: 100%;">
             <tr><td>
+                    <?php if($success){ ?>
+                        <div class="panel-body">
+                            <p class="text-center">
+                                <?php $this->flash->success("На ваш email отправлено сообщение с подтверждением"); ?>
+                            </p>
+                        </div>
+                    <?php }else{ ?>
                 <form id="formLogin" action="<?= $form->getAction(); ?>" method="POST">
                     <div class="panel panel-default col-md-4 col-md-offset-4">
                         <div class="panel-heading">
@@ -31,6 +38,7 @@ header('Content-type: text/html; charset=utf-8');
                         </div>
                     </div>
                 </form>
+                   <?php }?>
             </td></tr>
         </table>
     </body>

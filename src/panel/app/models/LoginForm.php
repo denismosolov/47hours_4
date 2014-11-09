@@ -7,17 +7,17 @@
  */
 
 use Phalcon\Forms\Form,
-    Phalcon\Forms\Element\Text,
+    Phalcon\Forms\Element\Email as EmailElement,
     Phalcon\Forms\Element\Submit,
     Phalcon\Forms\Element\Password,
-    Phalcon\Mvc\Model\Validator\Email,
-    Phalcon\Mvc\Model\Validator\PresenceOf;
+    Phalcon\Validation\Validator\Email,
+    Phalcon\Validation\Validator\PresenceOf;
 
 class LoginForm extends Form
 {
     public function initialize()
     {
-        $email = new Text("email");
+        $email = new EmailElement("email");
         $email->addValidator(new PresenceOf(array(
             'message' => 'Это обязательное поле'
         )));

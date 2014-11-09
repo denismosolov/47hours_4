@@ -10,6 +10,20 @@
 <body>
 <table style="height: 100%; width: 100%;">
     <tr><td>
+            <?php if($nf){ ?>
+                <div class="panel-body">
+                    <p class="text-center">
+                        <?php $this->flash->notice("Пользователь с такими данными не существует"); ?>
+                    </p>
+                </div>
+            <?php }?>
+            <?php if($err){ ?>
+                <div class="panel-body">
+                    <p class="text-center">
+                        <?php $this->flash->notice("Были введены некорректные данные"); ?>
+                    </p>
+                </div>
+            <?php }?>
             <form id="formLogin" action="<?= $form->getAction(); ?>" method="POST">
                 <div class="panel panel-default col-md-4 col-md-offset-4">
                     <div class="panel-heading">

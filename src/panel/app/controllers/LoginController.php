@@ -14,17 +14,19 @@ class LoginController extends \Phalcon\Mvc\Controller
         $loginForm->setAction('/login');
         if($this->request->isPost())
         {
-            $userEmail = $this->request->get("email", "email");
-            $userPassword = $this->request->get("password", "string");
-
-            if($loginForm->isValid($_POST)){
-                
+            if($loginForm->isValid($this->request->getPost())){
+                $userEmail = $this->request->get("email", "email");
+                $userPassword = $this->request->get("password", "string");
+                $user = \Users::ifUserExist($userEmail, $userPassword)->getFirst();
+                if($user){
+                    $this->session->set("curr_user", $user);
+                    $this->response->redirect('cabinet');
+                }else{
+                    $this->view->setVar('nf', true);
+                }
+            }else{
+                $this->view->setVar('err', true);
             }
-            exit;
-
-            // Send email with confirmation code to user email
-        }else{
-            // Something wrong
         }
         $this->view->setVar('form', $loginForm);
     }
