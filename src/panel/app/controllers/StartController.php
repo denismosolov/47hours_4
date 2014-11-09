@@ -67,7 +67,7 @@ class StartController extends \Phalcon\Mvc\Controller
             
             $response = new \Phalcon\Http\Response();
             // @todo: insert survey base url from db
-            $response->redirect('http://www.surveygizmo.com/s3/1884090/screening?user_id=' . $user->getId() . '&survey_id=' . $request['survey_id'], true, 302);
+            $response->redirect('http://www.surveygizmo.com/s3/1884487/47hours-demo?user_id=' . $user->getId() . '&survey_id=' . $request['survey_id'], true, 302);
             return $response;
         } else {
             throw new Exception('An error has occured #1');
