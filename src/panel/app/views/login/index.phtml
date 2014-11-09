@@ -16,8 +16,15 @@
         });
     });
 </script>
-<table style="height: 100%; width: 100%;">
-    <tr><td>
+<div class="row">
+<div class="col-md-4 col-md-offset-4">
+    <div class="col-md-6" style="text-align: center;"><h1 class="slogan">По твоему важному мнению</h1></div>
+    <div class="col-md-4" style="text-align: center;">
+        <img src="/img/logo.jpg" height="150px" />
+    </div>
+</div>
+</div>
+<div class="row">
             <form id="formLogin" action="<?= $form->getAction(); ?>" method="POST">
                 <div class="panel panel-default col-md-4 col-md-offset-4">
                     <div class="panel-heading">
@@ -49,8 +56,7 @@
                     </div>
                 </div>
             </form>
-        </td></tr>
-</table>
+</div>
 <script type="text/javascript">
     $(document).ready(function() {
         $('input#reg_btn').click(function(){
