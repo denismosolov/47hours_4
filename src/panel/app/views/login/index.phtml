@@ -34,13 +34,13 @@
                         <div class="form-group">
                             <p>
                                 <label for="txtEmail">E-mail:</label>
-                                <?= $form->render('email',array('class'=>'form-control')); ?>
+                                <?= $form->render('email',array('class'=>'form-control', 'required' => true)); ?>
                             </p>
                         </div>
                         <div class="form-group">
                             <p>
                                 <label for="txtPassword">Пароль:</label>
-                                <?= $form->render('password',array('class'=>'form-control')); ?>
+                                <?= $form->render('password',array('class'=>'form-control', 'required' => true)); ?>
                             </p>
                         </div>
                         <div class="form-buttons-group">

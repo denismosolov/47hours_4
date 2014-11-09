@@ -55,27 +55,48 @@ and open the template in the editor.
                 <p>Чтобы мы могли присылать подходящие вам опросы, пожалуйста, <a href="/start?survey_id=1">ответьте на несколько вопросов</a>.</p>
                 </section>
                 <section id="section_available">
-                    <header>Доступные опросы:</header>
-                    <article>
                         <?php if (empty($open_surveys)) { ?>
                        <div>К сожалению, сейчас нет опросов для вас. Зайдите позже.</div>
                         <?php } else { ?>
+                            <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Опрос</th>
+                                        <th>Вознаграждение</th>
+                                    </tr>
+                                </thead>
                             <?php foreach ($open_surveys as $open_survey) { ?>
-                            <div><a href="/start?survey_id=<?php echo $open_survey->getId() ?>">Опрос #<?php echo $open_survey->getId(); ?></a></div>
+                                <tr>
+                                    <td><a href="/start?survey_id=<?php echo $open_survey->getId() ?>">Опрос #<?php echo $open_survey->getId(); ?></a></td>
+                                    <td>5 руб.</td>
+                                </tr>
                             <?php } ?>
+                            </table>
+                            </div>
                         <?php } ?>
-                    </article>
                 </section>
                 <section id="section_completed">
-                    <header>Пройденные опросы:</header>
                         <?php if (empty($my_surveys)) { ?>
                         <div>К сожалению, сейчас нет опросов для вас. Зайдите позже.</div>
                         <?php } else { ?>
+                            <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Опрос</th>
+                                        <th>Вознаграждение</th>
+                                    </tr>
+                                </thead>
                             <?php foreach ($my_surveys as $my_survey) { ?>
-                            <div>Опрос #<?php echo $my_survey->getId() ?> </div>
+                                <tr>
+                                    <td>Опрос #<?php echo $my_survey->getId() ?></td>
+                                    <td>10 руб.</td>
+                                </tr>
                             <?php } ?>
+                            </table>
+                            </div>
                         <?php } ?>
-                    </article>
                 </section>
             </div>
         </div>
