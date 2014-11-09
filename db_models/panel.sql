@@ -9,8 +9,6 @@ USE `panel` ;
 -- -----------------------------------------------------
 -- Table `panel`.`users`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `panel`.`users` ;
-
 CREATE TABLE IF NOT EXISTS `panel`.`users` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `created_date` DATETIME NOT NULL,
@@ -30,8 +28,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `panel`.`screening_fields`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `panel`.`screening_fields` ;
-
 CREATE TABLE IF NOT EXISTS `panel`.`screening_fields` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `question_id` BIGINT NOT NULL,
@@ -45,8 +41,6 @@ CREATE TABLE IF NOT EXISTS `panel`.`screening_fields` (
 -- -----------------------------------------------------
 -- Table `panel`.`screening_data`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `panel`.`screening_data` ;
-
 CREATE TABLE IF NOT EXISTS `panel`.`screening_data` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `user_id` BIGINT NOT NULL,
@@ -60,14 +54,12 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `panel`.`surveys`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `panel`.`surveys` ;
-
 CREATE TABLE IF NOT EXISTS `panel`.`surveys` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(256) NOT NULL,
   `created_date` DATETIME NOT NULL,
   `required_respondents_count` INT NULL,
-  `is_active` TINYINT(1) NOT NULL,
+  `is_active` TINYINT NOT NULL,
   `link` TEXT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC))
@@ -77,8 +69,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `panel`.`users_surveys`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `panel`.`users_surveys` ;
-
 CREATE TABLE IF NOT EXISTS `panel`.`users_surveys` (
   `user_id` BIGINT NOT NULL,
   `survey_id` BIGINT NOT NULL,
@@ -86,6 +76,17 @@ CREATE TABLE IF NOT EXISTS `panel`.`users_surveys` (
   `completed_date` DATETIME NULL,
   `is_passed` TINYINT NULL)
 ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `panel`.`invited_users`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `panel`.`invited_users` (
+  `survey_id` INT NOT NULL,
+  `user_id` INT NOT NULL,
+  PRIMARY KEY (`survey_id`, `user_id`))
+ENGINE = InnoDB
+COMMENT = 'Match surveys with invited users';
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
