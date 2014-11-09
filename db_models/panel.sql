@@ -98,7 +98,7 @@ INSERT INTO `panel`.`surveys` VALUES(1, 'Довольны ли вы услуга
 
 INSERT INTO `panel`.`users` VALUES(1, '2014-11-09', 0, 0, NULL, NULL, NULL, 'queentin@hackaton.tut', NULL, '385165322b273704f9d078928b79e4d1');
 
-
+INSERT INTO `panel`.`invited_users` VALUES(1, 1);
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
