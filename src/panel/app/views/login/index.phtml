@@ -6,6 +6,7 @@
     <link href="/css/bootstrap/bootstrap.min.css" rel="stylesheet">
     <link href="/css/bootstrap/bootstrap-theme.min.css" rel="stylesheet">
     <link href="/css/custom.css" rel="stylesheet">
+    <script src="/js/jquery/jquery-1.11.0.min.js"></script>
 </head>
 <body>
 <table style="height: 100%; width: 100%;">
@@ -44,12 +45,19 @@
                         </div>
                         <div class="form-buttons-group">
                             <?= $form->render('submit',array('class'=>'btn btn-primary col-md-3')); ?>
-                            <input type="button" class="btn btn-default col-md-3" value="Регистрация" />
+                            <input type="button" id="reg_btn" class="btn btn-default col-md-3" value="Регистрация" />
                         </div>
                     </div>
                 </div>
             </form>
         </td></tr>
 </table>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('input#reg_btn').click(function(){
+            window.location = '/registration';
+        });
+    });
+</script>
 </body>
 </html>

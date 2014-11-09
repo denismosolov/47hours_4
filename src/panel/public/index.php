@@ -58,7 +58,6 @@ try {
     /*$di->set('router', function () {
         $router = new Phalcon\Mvc\Router\Annotations(false);
         $router->setDefaultController('login');
-        $router->setDefaultAction('index');
         return $router;
     });*/
 
@@ -71,4 +70,3 @@ try {
 } catch(\Phalcon\Exception $e) {
     echo "PhalconException: ", $e->getMessage();
 }
-    

@@ -23,7 +23,7 @@ class CabinetController extends \Phalcon\Mvc\Controller
             //Retrieve user
             $user = $this->session->get("curr_user");
         } else {
-            throw new Exception('Unauthorized');
+            $this->response->redirect('login');
         }
         
         // @todo: check how many respondents asked, is_opened
@@ -55,6 +55,6 @@ class CabinetController extends \Phalcon\Mvc\Controller
 
     public function logoutAction(){
         $this->session->remove('curr_user');
-        $this->response->redirect('/login');
+        $this->response->redirect('login');
     }
 }
