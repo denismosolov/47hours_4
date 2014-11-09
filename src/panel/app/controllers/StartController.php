@@ -41,11 +41,11 @@ class StartController extends \Phalcon\Mvc\Controller
         // befo it redirect to survey,
         // it tracks survey_id, user_id and start_date 
         // is_passed, completed_date will be added later
-        $UserSurveys = new UserSurveys();
-        $UserSurveys->setUserId($this->session->get('user_id'));
-        $UserSurveys->setSurveyId($request['survey_id']);
-        $UserSurveys->setStartDate(date("Y-m-d H:i:s"));
-        if($UserSurveys->save()) {
+        $UsersSurveys = new UsersSurveys();
+        $UsersSurveys->setUserId($this->session->get('user_id'));
+        $UsersSurveys->setSurveyId($request['survey_id']);
+        $UsersSurveys->setStartDate(date("Y-m-d H:i:s"));
+        if($UsersSurveys->save()) {
             // to let the system know the user is answering survey_id
             $this->session->set('active_users_surveys_id', '1');
             

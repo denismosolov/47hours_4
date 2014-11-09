@@ -6,7 +6,7 @@
  * Time: 19:43
  */
 
-class UserSurveys extends \Phalcon\Mvc\Model
+class UsersSurveys extends \Phalcon\Mvc\Model
 {
     
     private $user_id;

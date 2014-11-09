@@ -34,18 +34,18 @@ class FinishController extends \Phalcon\Mvc\Controller
             throw new Exception('An error has occured #4');
         }
         
-        $UserSurveys = UserSurveys::findFirst(array('user_id' => $request['user_id'], 'survey_id' => $request['survey_id']));
+        $UsersSurveys = UsersSurveys::findFirst(array('user_id' => $request['user_id'], 'survey_id' => $request['survey_id']));
         
-        if (! $UserSurveys || $UserSurveys->getUserId() != $request['user_id'] || $UserSurveys->getSurveyId() != $request['survey_id']) {
+        if (! $UsersSurveys || $UsersSurveys->getUserId() != $request['user_id'] || $UsersSurveys->getSurveyId() != $request['survey_id']) {
             // @todo: probably cheater deteced, should log
             // it might help in resolving cheater in the future
             throw new Exception('An error has occured #5');
         }
         
-        $UserSurveys->setPassed(isset($request['is_passed']) ? '1' : '0');
-        $UserSurveys->setCompletedDate(date("Y-m-d H:i:s"));
+        $UsersSurveys->setPassed(isset($request['is_passed']) ? '1' : '0');
+        $UsersSurveys->setCompletedDate(date("Y-m-d H:i:s"));
         $this->session->remove('active_users_surveys_id');
-        if($UserSurveys->save()) {
+        if($UsersSurveys->save()) {
             // @todo: implement another type of redirect
             // this one is awful
             $this->response->redirect('/cabinet/index', true);
