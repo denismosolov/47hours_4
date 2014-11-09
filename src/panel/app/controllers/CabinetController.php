@@ -18,12 +18,13 @@ class CabinetController extends \Phalcon\Mvc\Controller
         // @todo: remove
 //        $this->session->set('user_id', '1');
         // end debug
-        
+
         if ($this->session->has("curr_user")) {
             //Retrieve user
             $user = $this->session->get("curr_user");
         } else {
             $this->response->redirect('login');
+            return;
         }
         
         // @todo: check how many respondents asked, is_opened
@@ -65,7 +66,7 @@ class CabinetController extends \Phalcon\Mvc\Controller
     }
 
     public function logoutAction(){
-        $this->session->remove('curr_user');
+        $this->session->destroy();
         $this->response->redirect('login');
     }
 }
