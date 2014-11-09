@@ -16,6 +16,10 @@ class InvitedUsers extends \Phalcon\Mvc\Model
     private $user_id;
     private $survey_id;
     
+    public function getSource() {
+        return 'invited_users';
+    }
+
     public function initialize()
     {
         $this->setSource('invited_users');
