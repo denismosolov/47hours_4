@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS `panel`.`users` (
   `created_date` DATETIME NOT NULL,
   `is_active` TINYINT NOT NULL,
   `is_confirmed` TINYINT NOT NULL,
-  `last_updated_date` DATETIME NOT NULL,
+  `last_updated_date` DATETIME NULL,
   `confirmation_code` VARCHAR(128) NULL,
   `registration_data` TEXT NULL,
   `email` VARCHAR(128) NOT NULL,
@@ -96,7 +96,7 @@ INSERT INTO `panel`.`surveys` VALUES(2, 'Какой город самый без
 INSERT INTO `panel`.`surveys` VALUES(3, 'Ваш любимый президент ?', '2014-11-07', NULL, 1, 'http://www.pravmir.ru/aleksandr-nevskij-myslitel-filosof-strateg-svyatoj/');
 INSERT INTO `panel`.`surveys` VALUES(4, 'Чем ворон похож на письменный стол', '2014-11-09', NULL, 1, 'http://otvet.mail.ru/question/35731609');
 
-INSERT INTO `panel`.`users` VALUES(1, '2014-11-09', 0, 0, '0000-00-00', NULL, NULL, 'queentin@hackaton.tut', NULL, '385165322b273704f9d078928b79e4d1');
+INSERT INTO `panel`.`users` VALUES(1, '2014-11-09', 0, 0, NULL, NULL, NULL, 'queentin@hackaton.tut', NULL, '385165322b273704f9d078928b79e4d1');
 
 
 
