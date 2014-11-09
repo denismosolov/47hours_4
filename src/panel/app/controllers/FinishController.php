@@ -10,9 +10,15 @@ class FinishController extends \Phalcon\Mvc\Controller
 {
     public function IndexAction() {
         
-        if(! $this->session->has('user_id')) {
-            // user have to be authorized
-            throw new Exception('An error has occured #1');
+//        if(! $this->session->has('user_id')) {
+//            // user have to be authorized
+//            throw new Exception('An error has occured #1');
+//        }
+        if ($this->session->has("curr_user")) {
+            //Retrieve user
+            $user = $this->session->get("curr_user");
+        } else {
+            throw new Exception('Unauthorized');
         }
         if (! $this->session->has('active_users_surveys_id')) {
             // see start controller
@@ -27,7 +33,7 @@ class FinishController extends \Phalcon\Mvc\Controller
             throw new Exception('An error has occured #3');
         }
         
-        $UsersSurveys = UsersSurveys::findFirst(array('user_id' => $this->session->get('user_id'), 'survey_id' => $request['survey_id'], 'completed_date is null'));
+        $UsersSurveys = UsersSurveys::findFirst(array('user_id' => $user->getId(), 'survey_id' => $request['survey_id'], 'completed_date is null'));
         
         if (! $UsersSurveys) {
             // @todo: probably cheater deteced, should log

@@ -16,18 +16,20 @@ class CabinetController extends \Phalcon\Mvc\Controller
     public function indexAction() {
         // for debug
         // @todo: remove
-        $this->session->set('user_id', '1');
+//        $this->session->set('user_id', '1');
         // end debug
         
-        if (! $this->session->has('user_id')) {
-            // unauthoried access
-            throw new Exception('An error has occured #1');
+        if ($this->session->has("curr_user")) {
+            //Retrieve user
+            $user = $this->session->get("curr_user");
+        } else {
+            throw new Exception('Unauthorized');
         }
         
         // @todo: check how many respondents asked, is_opened
         // @todo refactoring!!
         $InvitedUsers = InvitedUsers::find(array(
-            'user_id' => $this->session->get('user_id')
+            'user_id' => $user->getId()
         ));
         $open_surveys = array();
         $my_surveys = array();
@@ -35,7 +37,7 @@ class CabinetController extends \Phalcon\Mvc\Controller
             foreach ($InvitedUsers as $row) {
                 $sid = $row->getSurveyId();
                 $US = UsersSurveys::findFirst(array(
-                    'user_id' => $this->session->get('user_id'),
+                    'user_id' => $user->getId(),
                     'survey_id' => $sid
                 ));
                 if ($US) {
